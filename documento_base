@@ -1,0 +1,21 @@
+*****
+
+Se trata de un pequeño e-commerce para productos eco.
+
+El objetivo es comprar a productores cercanos.
+
+Para conseguir esto filtraremos por ayuntamiento o provincia.
+
+Para ello he diseñado lo siguiente.
+
+1.- La tabla usuarios, nombre del productor o del comprador. Aquí tendría que poner un rol de usario,
+quiero añadir un campo de rol, pero no sé que tipo de dato(Varchar posiblemente ) darle.
+
+
+2.- La tabla tipo_localización, introduciríamos si es ayuntamiento o provincia.
+
+3.-La tabala localización, la localización del productor, al cual le pongo un campo varchar en el cual podría alamcenar un JSON o algo similar para almacenar una latitud y longitud.
+
+4.-La tabla producto, con los productos y el precio.
+
+5.-La tabla producto_localización, tabla maestra que relaciona el producto y su localizacón.
