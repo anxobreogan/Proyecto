@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.25, for Linux (x86_64)
 --
--- Host: localhost    Database: Proyecto_Ecommerce
+-- Host: 127.0.0.1    Database: Proyecto_Ecommerce
 -- ------------------------------------------------------
 -- Server version	5.7.25-0ubuntu0.18.04.2
 
@@ -16,84 +16,58 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `localizacion`
+-- Dumping data for table `cesta`
 --
 
-DROP TABLE IF EXISTS `localizacion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `localizacion` (
-  `idlocalizacion` int(11) NOT NULL AUTO_INCREMENT,
-  `idtipo` int(11) NOT NULL,
-  `coordenas` varchar(255) NOT NULL,
-  PRIMARY KEY (`idlocalizacion`),
-  KEY `fk_localizacion_1_idx` (`idtipo`),
-  CONSTRAINT `fk_localizacion_1` FOREIGN KEY (`idtipo`) REFERENCES `tipo_localizacion` (`idtipo_localizacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `cesta` WRITE;
+/*!40000 ALTER TABLE `cesta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cesta` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `producto`
+-- Dumping data for table `localizacion`
 --
 
-DROP TABLE IF EXISTS `producto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `producto` (
-  `idproducto` int(11) NOT NULL AUTO_INCREMENT,
-  `producto` varchar(255) NOT NULL,
-  `precio` varchar(255) NOT NULL,
-  PRIMARY KEY (`idproducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `localizacion` WRITE;
+/*!40000 ALTER TABLE `localizacion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `localizacion` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `producto_localizacion`
+-- Dumping data for table `producto`
 --
 
-DROP TABLE IF EXISTS `producto_localizacion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `producto_localizacion` (
-  `idproducto` int(11) NOT NULL AUTO_INCREMENT,
-  `idlocalizacion` int(11) NOT NULL,
-  PRIMARY KEY (`idproducto`,`idlocalizacion`),
-  KEY `fk_producto_localizacion_2_idx` (`idlocalizacion`),
-  CONSTRAINT `fk_producto_localizacion_1` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idproducto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_producto_localizacion_2` FOREIGN KEY (`idlocalizacion`) REFERENCES `localizacion` (`idlocalizacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `producto` WRITE;
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `tipo_localizacion`
+-- Dumping data for table `producto_localizacion`
 --
 
-DROP TABLE IF EXISTS `tipo_localizacion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tipo_localizacion` (
-  `idtipo_localizacion` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_localizacion` varchar(200) NOT NULL,
-  PRIMARY KEY (`idtipo_localizacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `producto_localizacion` WRITE;
+/*!40000 ALTER TABLE `producto_localizacion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `producto_localizacion` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `usuarios`
+-- Dumping data for table `tipo_localizacion`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuarios` (
-  `idusuarios` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `fecha_modificacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idusuarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `tipo_localizacion` WRITE;
+/*!40000 ALTER TABLE `tipo_localizacion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tipo_localizacion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -104,4 +78,4 @@ CREATE TABLE `usuarios` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-10 12:45:22
+-- Dump completed on 2019-03-15 11:01:32
