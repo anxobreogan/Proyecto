@@ -1,38 +1,22 @@
 'use strict';
 
-const mysql = require('mysql2');
+// const mysql = require('mysql2');
 const mysqlPool = require('../../../databases/mysql-pool');
 
 
-/* function insertarProducto(producto, precio) {
-
-  const connection = mysqlPool.getConnection();
-
-  connection.query('INSERT INTO producto SET ?', {
-    producto,
-    precio,
-  });
-
-
-
-  console.log(producto + precio);
-} */
-
 async function altaProducto(req, res, next) {
+  const copia = { ...req.body };
+
 
   const connection = await mysqlPool.getConnection();
+  try {
+    await connection.query('INSERT INTO  producto set ?', copia);
 
-  await connection.query('INSERT INTO  producto set ?', [req.body]);
-
-  res.status(200).send('terminado con exito');
-
-  /* const productData = { ...req.body };
-
-  const { producto, precio } = productData;
-
-
-  res.status(200).send('hola'); */
-  /* insertarProducto(producto, precio); */
-  /* console.log(productData) */
+    res.status(200).send(copia);
+    connection.release();
+  } catch (e) {
+    res.status(400).send('ha habido un error');
+  }
 }
 module.exports = altaProducto;
+

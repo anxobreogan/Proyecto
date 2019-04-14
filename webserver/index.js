@@ -9,6 +9,26 @@ const app = express();
 let server = null;
 app.use(bodyParser.json());
 
+/**
+ * Middelware CORS
+ */
+
+
+app.use((req, res, next) => {
+  const accessControlAllowMethods = [
+    'POST', 'GET', 'OPTIONS', 'PATCH', 'PUT',
+  ];
+  const accessControlAllowHeaders = [
+    'content-type',
+  ];
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credential', 'true');
+  res.header('Acces-Control-Allow-Methods', accessControlAllowMethods.join(','));
+  res.header('Access-Control-Allow-Headers', accessControlAllowHeaders.join(','));
+  /* res.header('Access-Control-Expose-Headers', accessControlAllowHeaders.join(',')); */
+  next();
+});
 
 //rutas.
 
