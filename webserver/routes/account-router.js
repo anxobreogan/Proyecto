@@ -2,7 +2,7 @@
 
 const express = require('express');
 const createAccount = require('../controllers/account/create-acount');
-
+const login = require('../controllers/account/login');
 
 const activateAccount = require('../controllers/account/activate-acount');
 const altaProducto = require('../controllers/productos/alta');
@@ -23,6 +23,7 @@ accountRouter.delete('/producto/borrar/:idproducto', borrarProducto);
 
 accountRouter.post('/account', createAccount);
 accountRouter.get('/account/activate', activateAccount);
+accountRouter.post('/account/login', login);
 
 module.exports = accountRouter;
 
