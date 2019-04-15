@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     'POST', 'GET', 'OPTIONS', 'PATCH', 'PUT',
   ];
   const accessControlAllowHeaders = [
-    'content-type',
+    'Content-Type', 'Authorization', 'On-behalf-of', 'x-sg-elas-acl',
   ];
 
   res.setHeader('Access-Control-Allow-Origin', '*');

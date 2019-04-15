@@ -16,7 +16,7 @@ async function insertUserIntoDatabase(email, password) {
 
   const securePassword = await bcrypt.hash(password, 10);
 
-  const uuid = uuidV4;
+  const uuid = uuidV4();
   const now = new Date();
   const createdAt = now.toISOString().substring(0, 19).replace('T', ' ');
 
@@ -25,19 +25,16 @@ async function insertUserIntoDatabase(email, password) {
   console.log('uuid', uuid);
 
   const connection = await mysqlPool.getConnection();
-  await connection.query('INSERT INTO usuarios SET ?', {
+  await connection.query('INSERT INTO users SET ?', {
     uuid,
     email,
     password: securePassword,
     createdat: createdAt,
   });
   return uuid;
-
-
 }
 /**
- * 
- * @param {String} uuid 
+  * @param {String} uuid 
  * @param {String} verificationCode
  */
 async function addVerificationCode(uuid) {
@@ -47,12 +44,12 @@ async function addVerificationCode(uuid) {
   const now = new Date();
 
   const createdAt = now.toISOString().substring(0, 19).replace('T', ' ');
-  const sqlQuery = 'INSERT INTO verificacion SET ?';
+  const sqlQuery = 'INSERT INTO users_activation SET ?';
   const connection = await mysqlPool.getConnection();
 
   await connection.query(sqlQuery, {
-    usuariouuid: uuid,
-    verificacioncodigo: verificationCode,
+    user_uuid: uuid,
+    verification_code: verificationCode,
     createdat: createdAt,
   });
   connection.release();
@@ -63,7 +60,7 @@ async function sendEmailRegistration(userEmail, verificationCode) {
   const msg = {
     to: userEmail,
     from: {
-      email: 'prueba@yopmail.com',
+      email: 'anxoprueba02@yopmail.com',
       name: 'prueba',
     },
     subject: 'Saludos de prueba',
@@ -71,7 +68,7 @@ async function sendEmailRegistration(userEmail, verificationCode) {
     html: `link de confirmación <a href="${process.env.HTTP_SERVER_DOMAIN}/api/account/activate?verification_code=${verificationCode}">activate it here</a>`,
   };
   const data = await sendgridMail.send(msg);
-
+  /*  console.log(data); */
   return data;
 }
 
