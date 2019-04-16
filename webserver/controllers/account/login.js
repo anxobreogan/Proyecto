@@ -147,6 +147,7 @@ async function login(req, res, next) {
         expiresIn: jwtTokenExpiration,
       };
 
+
       return res.status(200).json(response);
     }
 

@@ -3,6 +3,7 @@
 const express = require('express');
 const createAccount = require('../controllers/account/create-acount');
 const login = require('../controllers/account/login');
+const checkJwtToken = require('../controllers/sesion/check-jwttoken');
 
 const activateAccount = require('../controllers/account/activate-acount');
 const altaProducto = require('../controllers/productos/alta');
@@ -17,7 +18,7 @@ const accountRouter = express.Router();
 /* accountRouter.get('/account/{id}', createAccount); */ // Recuperar usuario con id x (opcional)
 
 accountRouter.post('/producto', altaProducto);
-accountRouter.get('/producto/listar', listarProducto);
+accountRouter.get('/producto/listar', checkJwtToken, listarProducto);
 accountRouter.delete('/producto/borrar/:idproducto', borrarProducto);
 /* accountRouter.get('/product/{id}', createAccount); */ // Recuperar producto con id x 
 
