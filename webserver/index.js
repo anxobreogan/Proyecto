@@ -16,15 +16,19 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   const accessControlAllowMethods = [
-    'POST', 'GET', 'OPTIONS', 'PATCH', 'PUT',
+    'POST', 'GET', 'OPTIONS', 'PATCH', 'PUT', 'DELETE',
   ];
   const accessControlAllowHeaders = [
-    'Content-Type', 'Authorization', 'On-behalf-of', 'x-sg-elas-acl',
+    'Content-Type',
+    'Authorization',
+    'Origin',
+    'x-requested-with',
+    'Access-Control-Allow-Methods',
   ];
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credential', 'true');
-  res.header('Acces-Control-Allow-Methods', accessControlAllowMethods.join(','));
+  res.header('Access-Control-Allow-Methods', accessControlAllowMethods.join(','));
   res.header('Access-Control-Allow-Headers', accessControlAllowHeaders.join(','));
   /* res.header('Access-Control-Expose-Headers', accessControlAllowHeaders.join(',')); */
   next();

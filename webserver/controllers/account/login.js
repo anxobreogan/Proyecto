@@ -145,6 +145,8 @@ async function login(req, res, next) {
       const response = {
         accessToken: token,
         expiresIn: jwtTokenExpiration,
+        uuid: userData.uuid,
+        email: userData.email,
       };
 
 

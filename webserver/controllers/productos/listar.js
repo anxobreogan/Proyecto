@@ -3,8 +3,10 @@
 const mysqlPool = require('../../../databases/mysql-pool');
 
 async function listarProducto(req, res, next) {
+
+
   const connection = await mysqlPool.getConnection();
-  const sql = ('SELECT * FROM producto');
+  const sql = ('SELECT * FROM producto ');
 
 
 

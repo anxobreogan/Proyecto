@@ -13,7 +13,7 @@ async function borrarProducto(req, res, next) {
 
     await connection.query('DELETE FROM producto WHERE idproducto=?', [idproducto]);
 
-    res.status(200).send('Producto borrado');
+    res.status(204);
 
     connection.release();
   } catch (e) {

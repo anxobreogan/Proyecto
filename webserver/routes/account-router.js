@@ -9,6 +9,8 @@ const activateAccount = require('../controllers/account/activate-acount');
 const altaProducto = require('../controllers/productos/alta');
 const listarProducto = require('../controllers/productos/listar');
 const borrarProducto = require('../controllers/productos/baja');
+const filtrarPorUser = require('../controllers/productos/filtrar');
+const addCesta = require('../controllers/productos/cesta');
 
 const accountRouter = express.Router();
 /* accountRouter.post('/login/{id}', createAccount); */ // login
@@ -17,9 +19,11 @@ const accountRouter = express.Router();
 /* accountRouter.get('/account', createAccount); */ // Recuperar usuarios
 /* accountRouter.get('/account/{id}', createAccount); */ // Recuperar usuario con id x (opcional)
 
-accountRouter.post('/producto', altaProducto);
-accountRouter.get('/producto/listar', checkJwtToken, listarProducto);
+accountRouter.post('/producto', checkJwtToken, altaProducto);
+accountRouter.get('/producto/listar', listarProducto);
+accountRouter.get('/producto/filtrarPorUser/:uuid', checkJwtToken, filtrarPorUser);
 accountRouter.delete('/producto/borrar/:idproducto', borrarProducto);
+accountRouter.post('/producto/cesta', addCesta);
 /* accountRouter.get('/product/{id}', createAccount); */ // Recuperar producto con id x 
 
 accountRouter.post('/account', createAccount);
