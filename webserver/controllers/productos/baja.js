@@ -5,19 +5,30 @@ const mysqlPool = require('../../../databases/mysql-pool');
 async function borrarProducto(req, res, next) {
 
   const connection = await mysqlPool.getConnection();
+
   try {
     const { idproducto } = req.params;
 
-    console.log(idproducto);
 
 
-    await connection.query('DELETE FROM producto WHERE idproducto=?', [idproducto]);
+    // console.log(idproducto);
+
+
+
+    await connection.query(`DELETE FROM producto WHERE idproducto=${idproducto}`);
+
+
+    //   `UPDATE users_activation
+    // SET verificatedat = '${now.toISOString().substring(0, 19).replace('T', ' ')}'
+    // WHERE verification_code='${verificationCode}'
+    // AND verificatedat IS NULL
+
 
     res.status(204);
 
     connection.release();
   } catch (e) {
-    res.status(400).send('ha habido un error');
+    res.status(400).send('ha habido un error', e);
   }
 }
 

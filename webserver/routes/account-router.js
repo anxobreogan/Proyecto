@@ -11,6 +11,7 @@ const listarProducto = require('../controllers/productos/listar');
 const borrarProducto = require('../controllers/productos/baja');
 const filtrarPorUser = require('../controllers/productos/filtrar');
 const addCesta = require('../controllers/productos/cesta');
+const listarCesta = require('../controllers/productos/listarCesta');
 
 const accountRouter = express.Router();
 /* accountRouter.post('/login/{id}', createAccount); */ // login
@@ -24,6 +25,7 @@ accountRouter.get('/producto/listar', listarProducto);
 accountRouter.get('/producto/filtrarPorUser/:uuid', checkJwtToken, filtrarPorUser);
 accountRouter.delete('/producto/borrar/:idproducto', borrarProducto);
 accountRouter.post('/producto/cesta', addCesta);
+accountRouter.get('/producto/cesta/listar', listarCesta);
 /* accountRouter.get('/product/{id}', createAccount); */ // Recuperar producto con id x 
 
 accountRouter.post('/account', createAccount);
