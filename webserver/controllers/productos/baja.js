@@ -27,6 +27,8 @@ async function borrarProducto(req, res, next) {
 
     res.status(204).send('Todo ok');
 
+
+
     connection.release();
   } catch (e) {
     res.status(400).send('ha habido un error');

@@ -7,12 +7,20 @@ const mysqlPool = require('../../../databases/mysql-pool');
 async function addCesta(req, res, next) {
   const copia = { ...req.body };
 
+  const { idproducto } = copia;
+
+  console.log(idproducto);
+
 
   const connection = await mysqlPool.getConnection();
   try {
 
-    await connection.query('INSERT INTO  cesta set ?', copia);
+    await connection.query(`insert into cesta (idproducto2,precio,uui2) SELECT idproducto, precio,uuid FROM producto WHERE idproducto=${idproducto}`);
 
+    //     insert into cesta (idproducto2,precio,uui2)
+    // select idproducto,precio,uuid
+    // from producto
+    // where idproducto='35';
 
     res.status(200).send(copia);
     connection.release();
