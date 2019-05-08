@@ -20,12 +20,6 @@ async function actualizarProducto(req, res, next) {
 
 
     await connection.query('UPDATE producto set ? WHERE idproducto=?', [req.body, idproducto]);
-    // await connection.query(`UPDATE producto WHERE idproducto=${idproducto}`);
-
-    //   `UPDATE users_activation
-    // SET verificatedat = '${now.toISOString().substring(0, 19).replace('T', ' ')}'
-    // WHERE verification_code='${verificationCode}'
-    // AND verificatedat IS NULL
 
 
     res.status(204).send('Todo ok');
